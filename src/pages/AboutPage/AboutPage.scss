@@ -1,0 +1,120 @@
+@import '~shared/styles/_theme.scss';
+
+$selectedImageHeight: 400px;
+
+main {
+
+    h1 {
+        margin-bottom: 32px;
+    }
+    
+    .summarySection {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: unset;
+        margin-bottom: 40px;
+
+        img {
+            object-fit: cover;
+            min-width: 45%;
+            height: $selectedImageHeight;
+            margin-bottom: 32px;
+        }
+        .textAndNavigation {
+            display: flex;
+            flex-direction: column;
+            padding: 8px;
+
+            .text {
+                overflow: hidden;
+                overflow-y: auto;
+                height: 100%;
+                margin-bottom: 32px;
+
+                p {
+                    font-weight: 700;
+                    line-height: 24px;
+                }
+            }
+            .navigation {
+                display: flex;
+                flex-direction: row;
+                height: 56px;
+
+                button {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    background-color: map-get($colors, "brownLight");
+                    border-radius: 8px;
+                    padding: 16px;
+                    
+                    a {
+                        text-decoration: none;
+                        color: map-get($colors, "blackLight");
+                        font-weight: 700;
+                    }
+
+                    + button {
+                        margin-left: 16px;
+                    }
+
+                    &:focus, &:hover {
+                        opacity: 0.85;
+                    }
+                }
+            }
+        }
+    }
+
+    .imagesFromTodaySection {
+        display: flex;
+        flex-direction: column;
+        
+        h3 {
+            font-weight: 500;
+            margin-bottom: 32px;
+            
+            span {
+                &.brown {
+                    color: map-get($colors, "brown");
+                }
+            }
+        }
+    }
+}
+
+@include for-tablet-up() {
+    main {
+        .summarySection {
+            .textAndNavigation {
+                padding: unset;
+            }
+        }
+    }
+}
+
+@include for-desktop-up() {
+    main {
+        .summarySection {
+            flex-direction: row;
+            margin-bottom: 96px;
+            height: $selectedImageHeight;
+
+            img {
+                margin-bottom: unset;
+                height: unset;
+            }
+            .textAndNavigation {
+                height: unset;
+                padding: 0 156px 0 24px;
+                
+                .text {
+                    padding: 16px;
+                }
+            }
+        }
+    }
+}

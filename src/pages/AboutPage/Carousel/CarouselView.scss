@@ -1,0 +1,109 @@
+@import '~shared/styles/_theme.scss';
+
+$imageWidth: 216px;
+$pageSizeDesktop: 5;
+
+.carousel {
+    display: flex;
+    flex-direction: column;
+
+    .trackAndLocation {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 8px;
+        
+        // width: calc(#{$imageWidth} + 16px);
+        // width: 100%;
+        // height: 100%;
+
+        .track {
+            display: flex;
+            flex-direction: row;
+            height: 480px;
+            margin-bottom: 8px;
+
+            button {
+                min-width: calc(100% - 16px);
+                margin: 0 8px;
+
+                img {
+                    object-fit: cover;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            @media screen and (prefers-reduced-motion: no-preference) {
+                transition: all 0.25s;
+            }
+        }
+
+        .location {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            color: map-get($colors, "grey");
+            margin-right: 16px;
+            font-size: 16px;
+    
+            .pagesSizeDesktop {
+                display: none;
+            }
+        }
+    }
+
+    .navigationButtons {
+        display: flex;
+        flex-direction: row;
+        margin: auto;
+
+        button {
+            
+            img {
+                width: 56px;
+            }
+    
+            &:focus, &:hover {
+                img {
+                    filter: brightness(1.25);
+                }
+            }
+    
+            + button {
+                margin-left: 16px;
+            }
+        }
+    }
+}
+
+@include for-desktop-up() {
+    .carousel {
+        flex-direction: row;
+
+        .trackAndLocation {
+            .track {
+                height: 240px;
+                
+                button {
+                    min-width: calc((100% - (16px * (#{$pageSizeDesktop} - 1))) / #{$pageSizeDesktop});
+                }
+            }
+            .location {
+                margin-right: unset;
+
+                .pagesSizeMobile {
+                    display: none;
+                }
+                .pagesSizeDesktop {
+                    display: block;
+                }
+            }
+        }
+        .navigationButtons {
+            margin-left: 0 0 0 32px;
+        }
+    }
+}

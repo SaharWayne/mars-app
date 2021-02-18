@@ -1,0 +1,68 @@
+@import '~shared/styles/_theme.scss';
+
+$gridColumnGap: 8px;
+$gridRowGap: 16px;
+
+.imagesPage {
+
+    h3 {
+        margin-bottom: 24px;
+    }
+
+    .search {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 24px;
+        font-weight: 500;
+
+        input {
+            margin-left: 8px;
+            padding: 4px;
+            border: 1px solid map-get($colors, "brownLight");
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: map-get($colors, "brownLight");
+            padding: 4px 8px 4px 4px;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+
+            img {
+                width: 16px;
+                height: 16px;
+                margin-left: 4px;
+            }
+        }
+    }
+
+    .content {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        column-gap: $gridColumnGap;
+        row-gap: $gridRowGap;
+    
+        button {
+            width: calc(100% - #{$gridColumnGap});
+            height: 16vw;
+            max-width: 216px;
+            max-height: 240px;
+            padding: 0;
+    
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+@include for-desktop-up() {
+
+}
